@@ -16,6 +16,14 @@
 		zephyr,console = &cdc_acm_uart;
 	};
 
+
+vbatt: vbatt-divider {
+		compatible = "zmk,battery-voltage-divider";
+		label = "BATTERY";
+		io-channels = <&adc 5>;
+		output-ohms = <820000>; /** Double check that this is right */
+		full-ohms = <(1500000 + 820000)>;
+	};
 	
 	default_transform: keymap_transform_0 {
 		compatible = "zmk,matrix-transform";
