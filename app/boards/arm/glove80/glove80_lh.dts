@@ -36,6 +36,14 @@
 		init-delay-ms = <100>;
 	};
 
+vbatt: vbatt-divider {
+		compatible = "zmk,battery-voltage-divider";
+		label = "BATTERY";
+		io-channels = <&adc 5>;
+		output-ohms = <820000>; /** Double check that this is right */
+		full-ohms = <(1500000 + 820000)>;
+	};
+
 	vbatt: vbatt {
 		compatible = "zmk,battery-nrf-vddh";
 		label = "BATTERY";
