@@ -60,12 +60,12 @@
 //&num_word {  // num-word, requires PR #1441
 //    layers = <NUMB>;
   
-};
+//};
 //&caps_word {
    
 //    continue-list = <UNDERSCORE MINUS DEL BACKSPACE DELETE>;
    
-};
+//};
 /////////////// MACROS ///////////////
 #define MACRO(name, keys)                  \
 name: name##_macro {                       \
