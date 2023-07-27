@@ -266,13 +266,13 @@ combo_##name {                                   \
                         bindings = <                
 // _______________________________________________________________________________         _______________________________________________________________________________
 // |    ESC    |            |             |    RGB    |           |      =       |         |     /      |      7      |     8      |     9     |     -     |     BKSP   ||                       
-      &kp ESC       ___          EFFET        on_off    &bl BL_TOG    &kp EQUAL               &kp FSLH     &kp KP_N7    &kp KP_N8    &kp KP_N9   &kp MINUS       ___   
+      &kp ESC       ___          ___        ___    ___    &kp EQUAL               &kp FSLH     &kp KP_N7    &kp KP_N8    &kp KP_N9   &kp MINUS       ___   
 // ____________|____________|_____________|___________|___________|______________|         |____________|_____________|____________|___________|___________|____________|| 
 // |    TAB    |            |             |    RGB    |           |   Insert     |         |    *       |      4      |     5      |     6     |     +     |  SHIFT /'  || 
-       ___         &ENNE         E_POW        BRIGU    &bl BL_ON    &kp  INS                &kp STAR     &kp KP_N4    &kp KP_N5    &kp KP_N6   &kp PLUS  &pht RSHIFT SQT
+       ___         &ENNE         ___        ___    ___    &kp  INS                &kp STAR     &kp KP_N4    &kp KP_N5    &kp KP_N6   &kp PLUS  &pht RSHIFT SQT
 // |___________|____________|_____________|___________|___________|______________|         |____________|_____________|____________|___________|___________|____________|| 
 // |    CTRL   |            |             |    RGB    |           |   NUM LOCK   |         |     ./,    |       1     |      2     |      3    |     0     |    ENTER   ||   
-       ___         &pass          ___         BRIGD    &bl BL_SET 50  &kp KP_NLCK            &hm COMMA DOT  &kp KP_N1    &kp KP_N2    &kp KP_N3   &kp KP_N0    &kp RET   
+       ___         &pass          ___         ___    ___  &kp KP_NLCK            &hm COMMA DOT  &kp KP_N1    &kp KP_N2    &kp KP_N3   &kp KP_N0    &kp RET   
 // |___________|____________|_____________|___________|___________|______________|         |____________|_____________|____________|___________|___________|____________||            
 //                                       |     LGUI   |    ALT    |   ENTER    |            |   SPC/ALT   |   LAYER2   |             |   
 											&sk LGUI       ___           ___                &phe LALT SPACE    ___           ___
@@ -286,10 +286,10 @@ combo_##name {                                   \
      &mt ESC F1      &kp F2        &kp F3        &kp F4      &kp F5      &kp F6                 &kp F7     &kp F8      &kp F9     &kp F10     &kp F11      &kp F12   
 // _____________|______________|_____________|___________|____________|____________|         |__________|___________|__________|___________|___________|______________|| 
 // |     TAB    |   CLICK 3    |      <      | Mouse Up  |      >     |  Wheel Up  |         |          |   LEFT    |    UP    |   RIGHT   |    RCTRL  | PRINTSCREEN  ||   
-         ___         U_BTN3         U_WH_L       U_MS_U      U_WH_R       U_WH_U                 z_out     &kp LEFT    BG_DOC    &kp RIGHT   &kp RCTRL      s_cap
+         ___         ___         ___       ___      ___       ___                 z_out     &kp LEFT    BG_DOC    &kp RIGHT   &kp RCTRL      s_cap
 // |____________|______________|_____________|___________|____________|____________|         |__________|___________|__________|___________|___________|______________||   
 // |     CTRL   |  Right CLICK |  Mouse Left | Mouse Dn  |Mouse Right |  Wheel Dow |         |          | PREV WORD |    DOWN  | Next Word |   RSHIFT  |     ENTER    ||    
-         ___         U_BTN2        U_MS_L       U_MS_D       U_MS_R       U_WH_D                 z_in      PRV_WD      ED_DOC     NXT_WD     &kp RSHIFT     &kp RET  
+         ___         ___        ___       ___       ___       ___                 z_in      PRV_WD      ED_DOC     NXT_WD     &kp RSHIFT     &kp RET  
 // _____________|______________|_____________|___________|____________|____________|         |__________|___________|__________|___________|___________|______________||                   
 //                                      |  CAPS/SHFT   | Left CLICK |   ENTER     |            |   SPC/ALT   |   LAYER2   |   LAYER1    |   
                     	                    &sk LGUI       U_BTN1        ___                         ___           ___       &kp RALT
