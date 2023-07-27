@@ -23,7 +23,7 @@
 		compatible = "pwm-leds";
 		label = "BACK LED";
 		pwm_led_0 {
-			pwms = <&pwm0 16>; 
+			pwms = <&pwm0 6>; 
 			label = "Back LED configured as backlight";
 		};
 	};
@@ -31,23 +31,51 @@
 	ext-power {
 		compatible = "zmk,ext-power-generic";
 		label = "EXT_POWER";
-		control-gpios = <&gpio0 19 GPIO_ACTIVE_HIGH>; /* WS2812_CE */
+		control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>; /* WS2812_CE */
 		init-delay-ms = <100>;
 	};
 
-	vbatt: vbatt-divider {
-		compatible = "zmk,battery-voltage-divider";
+	vbatt: vbatt {
+		compatible = "zmk,battery-nrf-vddh";
 		label = "BATTERY";
-		io-channels = <&adc 5>;
-		output-ohms = <820000>; 
-		full-ohms = <(1500000 + 820000)>;
 	};
 
-	vbatt-vddh {
-		compatible = "zmk,battery-nrf-vddh";
-		label = "BATTERY-VDDH";
+
+	leds {
+		leds {
+		compatible = "gpio-leds";
+		blue_led: led_0 {
+			gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+			label = "Blue LED";
+		};
+	};
+  };
+
+/*
+  27 LEDs
+
+  
+            10 11 18 19 24 25
+            9  12 17 20 23 26
+            8  13 16 21 22 27
+ 1 2 3 *  7   14   15 
+ 6 5 4 *                       
+*/
+
+	underglow_indicators: underglow-indicators {
+		compatible  = "zmk,underglow-indicators";
+		layer-state = <25 24 19 18 11 10>;
+		bat-lhs     = <26 23 20 17 12 9>;
+		bat-rhs     = <27 22 21 16 13 8>;
+		capslock    = <15>;
+		numlock     = <14>;
+		scrolllock  = <10>;
+		ble-state   = <3 4 0 1>;
+		usb-state   = <5>;
+		output-fallback = <25>;
 	};
 };
+
 
 &spi1 {
 	compatible = "nordic,nrf-spim";
@@ -67,7 +95,7 @@
 		spi-max-frequency = <4000000>;
 
 		/* WS2812 */
-		chain-length = <40>; /* 40 keys have underglow at the moment */
+		chain-length = <27>; /* 40 keys have underglow at the moment */
 		spi-one-frame = <0x70>;
 		spi-zero-frame = <0x40>;
 
@@ -77,7 +105,7 @@
 
 &pwm0 {
 	status = "okay";
-	ch0-pin = <16>; 
+	ch0-pin = <6>; 
 };
 
 
@@ -91,26 +119,24 @@
 
 /* For right hand, the columns are offset by 7 */ 
 &default_transform {
-	col-offset = <7>;
+	col-offset = <6>;
 };
 
 &kscan0 {
 	row-gpios
-		= <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW1
-		, <&gpio0 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW2
-		, <&gpio0 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW3
-		, <&gpio1 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW4
-		, <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW5
-		, <&gpio0 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW6
+		= <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW1
+		, <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW2
+		, <&gpio0 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW3
+		, <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // RH ROW4
 		;
 	col-gpios
-		= <&gpio1 6 GPIO_ACTIVE_HIGH> // RH Thumb
-		, <&gpio1 4 GPIO_ACTIVE_HIGH> // RH COL1
-		, <&gpio0 2 GPIO_ACTIVE_HIGH> // RH COL2
-		, <&gpio1 7 GPIO_ACTIVE_HIGH> // RH COL3
-		, <&gpio1 5 GPIO_ACTIVE_HIGH> // RH COL4
-		, <&gpio1 3 GPIO_ACTIVE_HIGH> // RH COL5
-		, <&gpio1 1 GPIO_ACTIVE_HIGH> // RH COL6
+		= <&gpio1 11 GPIO_ACTIVE_HIGH> // RH Thumb
+		, <&gpio1 13 GPIO_ACTIVE_HIGH> // RH COL1
+		, <&gpio0 15 GPIO_ACTIVE_HIGH> // RH COL2
+		, <&gpio1 2 GPIO_ACTIVE_HIGH> // RH COL3
+		, <&gpio1 29 GPIO_ACTIVE_HIGH> // RH COL4
+		, <&gpio1 31 GPIO_ACTIVE_HIGH> // RH COL5
 		;
+
 };
 
