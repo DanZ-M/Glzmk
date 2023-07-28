@@ -11,6 +11,7 @@
 #include "glove80.dtsi"
 #include "glove80_lh-pinctrl.dtsi"
 
+
 / {
     model = "glove80_lh";
     compatible = "glove80_lh";
