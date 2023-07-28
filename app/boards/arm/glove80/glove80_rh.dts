@@ -43,9 +43,9 @@ vbatt: vbatt-divider {
 		full-ohms = <(1500000 + 820000)>;
 	};
 
-	vbatt: vbatt {
+	vbatt-vddh {
 		compatible = "zmk,battery-nrf-vddh";
-		label = "BATTERY";
+		label = "BATTERY-VDDH";
 	};
 
 
@@ -91,8 +91,8 @@ vbatt: vbatt-divider {
 	status = "okay";
 	mosi-pin = <13>; /* WS2812_VEXT_DATA */
 	// Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
-	sck-pin = <27>; /* Must select a not connected pin */
-	miso-pin = <14>; /* Must select a not connected pin */
+	sck-pin = <0>; /* Must select a not connected pin */
+	miso-pin = <6>; /* Must select a not connected pin */
 
 	led_strip: ws2812@0 {
 		compatible = "worldsemi,ws2812-spi";
