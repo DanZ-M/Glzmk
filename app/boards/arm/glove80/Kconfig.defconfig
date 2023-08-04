@@ -20,7 +20,7 @@ config ZMK_KEYBOARD_NAME
 	default "Glove80 Right"
 endif # BOARD_GLOVE80_RH
 
-if BOARD_GLOVE80_LH || BOARD_GLOVE80_RH
+if BOARD_GLOVE80_LH
 
 config ZMK_SPLIT
 	default y
@@ -63,4 +63,4 @@ config LED_PWM
 
 endif # ZMK_BACKLIGHT
 
-endif # BOARD_GLOVE80_LH || BOARD_GLOVE80_RH
+endif # BOARD_GLOVE80_LH
